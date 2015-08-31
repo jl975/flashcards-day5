@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // If we're hitting our home page, serve up our index.html file!
+
 app.get('/', function (req, res) {
     res.sendFile(indexHtmlPath);
 });
@@ -54,6 +55,14 @@ app.get('/cards', function (req, res) {
     });
 
 });
+
+app.get('/cards/:id', function(req, res, next){
+    FlashCardModel.findById(req.params.id).exec()
+        .then(function(foundCard){
+            res.json(foundCard);
+        })
+        .then(null, next);
+})
 
 app.post('/cards', function (req, res, next) {
     FlashCardModel.create(req.body)
@@ -82,4 +91,6 @@ app.put('/cards/:id', function (req, res, next) {
     })
     .then(null, next);
 });
+
+
 

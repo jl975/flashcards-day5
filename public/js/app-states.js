@@ -1,7 +1,13 @@
+app.config(function($urlRouterProvider){
+	$urlRouterProvider.otherwise('/');
+});
+
+
 app.config(function($stateProvider) {
-	$stateProvider.state('home', {
+	$stateProvider.state('cardView', {
 		url: '/',
-		template: ''
+		templateUrl: '../js/directives/flashcard/flashcardview.html',
+		controller: 'MainController'
 	});
 });
 
@@ -22,9 +28,26 @@ app.config(function($stateProvider) {
 });
 
 app.config(function($stateProvider) {
-	$stateProvider.state('cardView', {
-		url: '/cardview',
-		templateUrl: '../js/directives/flashcard/flashcardview.html',
-		controller: 'MainController'
+	$stateProvider.state('managecard', {
+		url: '/cards/:id',
+		template: '<edit-card></edit-card>',
+		controller: 'EditCardController'
+	});
+});
+
+
+app.config(function($stateProvider) {
+	$stateProvider.state('managecard.edit', {
+		url: '/cards/:id/edit',
+		template: '<edit-card></edit-card>',
+		controller: 'EditCardController'
+	});
+});
+
+app.config(function($stateProvider) {
+	$stateProvider.state('managecard.delete', {
+		url: '/cards/:id/delete',
+		templateUrl: '',
+		controller: ''
 	});
 });

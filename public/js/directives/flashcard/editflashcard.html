@@ -1,22 +1,6 @@
 <div class="flash-card">
-  <div ng-hide="editing">
-      <h1>{{ card.question | uppercase }}</h1>
-      <h3>{{ card.category }}</h3>
-      <ul class="flash-card-answers">
-        <li
-          ng-repeat="answer in card.answers"
-          class="flash-card-answer"
-          ng-click="answerQuestion(answer)">{{ answer.text }}</li>
-      </ul>
-      <h2
-        class="answer-feedback"
-        ng-class="card.answeredCorrectly ? 'correct' : 'incorrect'"
-        ng-show="card.answered">
-          <span ng-show="card.answeredCorrectly">Yeah, you got it right!</span>
-          <span ng-show="!card.answeredCorrectly">Nope, you got it wrong.</span>
-      </h2>
-  </div>
-<!--   <div ng-show="editing" ng-controller="EditCardController">
+  <div>
+  <button class="btn" ui-sref="managecard.delete({id: card._id})">Delete Card</button>
       <form name="cardForm" ng-submit="cardForm.$valid && saveCard()" novalidate>
           <h3>question</h3>
           <p ng-show="cardForm.questionField.$error.required">Question is a required field</p>
@@ -39,8 +23,8 @@
           <button type="submit">Save</button>
       </form>
   </div>
-  <div> -->
+  <div>
     <!-- <button class="btn" ng-click="editing = !editing">Toggle editing</button> -->
-     <button class="btn" ui-sref="managecard({id: card._id})">Manage Card</button>
+     
   </div>
 </div>

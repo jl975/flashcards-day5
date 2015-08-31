@@ -1,4 +1,4 @@
-app.controller('EditCardController', function ($scope, FlashCardsFactory) {
+app.controller('EditCardController', function ($scope, FlashCardsFactory, $stateParams) {
 	$scope.categories = FlashCardsFactory.categories;
 	$scope.saveCard = function () {
 		FlashCardsFactory.updateCard($scope.card)
@@ -6,4 +6,7 @@ app.controller('EditCardController', function ($scope, FlashCardsFactory) {
 			$scope.$parent.editing = false;
 		});
 	};
+	FlashCardsFactory.getCardById($stateParams.id).then(function(card){
+		$scope.card=card;
+	})
 });
