@@ -46,13 +46,22 @@ app.factory('FlashCardsFactory', function ($http, currentFlashCards) {
     return $http.get('/cards/'+id)
       .then(function (response){
         return response.data;
-      });
+    });
+  }
+
+  function deleteCardById(id) {
+    return $http.delete('/cards/'+id)
+      .then(function (response){
+        return response.body;
+    });
   }
 
   return {
     getFlashCards: getFlashCards,
     createCard: createFlashCard,
     updateCard: updateFlashCard,
-    categories: categories
+    categories: categories,
+    getCardById: getCardById,
+    deleteCardById: deleteCardById
   };
 });

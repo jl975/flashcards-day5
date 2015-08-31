@@ -1,6 +1,7 @@
 <div class="flash-card">
   <div>
   <button class="btn" ui-sref="managecard.delete({id: card._id})">Delete Card</button>
+  <ui-view></ui-view>
       <form name="cardForm" ng-submit="cardForm.$valid && saveCard()" novalidate>
           <h3>question</h3>
           <p ng-show="cardForm.questionField.$error.required">Question is a required field</p>

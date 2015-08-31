@@ -1,4 +1,4 @@
-app.directive('editCard', function(FlashCardFactory){
+app.directive('editCard', function(FlashCardsFactory){
   return {
     restrict: 'E',
     templateUrl: '/js/directives/flashcard/editflashcard.html',

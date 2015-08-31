@@ -92,5 +92,13 @@ app.put('/cards/:id', function (req, res, next) {
     .then(null, next);
 });
 
+app.delete('/cards/:id', function(req, res, next) {
+   FlashCardModel.findOneAndRemove({_id: req.params.id}).exec()
+       .then(function(foundCard){
+           res.json(foundCard);
+       })
+       .then(null, next); 
+});
+
 
 
